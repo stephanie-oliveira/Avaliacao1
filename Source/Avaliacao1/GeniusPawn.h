@@ -23,10 +23,49 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
+	UFUNCTION()
+		void DropLight();
+
+	FORCEINLINE class ALights* GetCurrentLight() const { return CurrentLight; }
+	FORCEINLINE void SetCurrentLight(class ALights* NewCurrentLight) { CurrentLight = NewCurrentLight; }
+
+
+	FORCEINLINE bool GetRedLight() const { return RedLight; }
+	FORCEINLINE void SetRedLight(bool NewRedLight) { RedLight = NewRedLight; }
+
+	FORCEINLINE bool GetBlueLight() const { return BlueLight; }
+	FORCEINLINE void SetBlueLight(bool NewBlueLight) { BlueLight = NewBlueLight; }
+
+	FORCEINLINE bool GetYellowLight() const { return YellowLight; }
+	FORCEINLINE void SetYellowLight(bool NewYellowLight) { YellowLight = NewYellowLight; }
+
+	FORCEINLINE bool GetGreenLight() const { return GreenLight; }
+	FORCEINLINE void SetGreenLight(bool NewGreenLight) { GreenLight = NewGreenLight; }
+
 private:
 
 	UPROPERTY(EditAnywhere)
 		UCameraComponent* Camera;
+
+	UPROPERTY(EditAnywhere)
+		bool RedLight;
+
+	UPROPERTY(EditAnywhere)
+		bool BlueLight;
+
+	UPROPERTY(EditAnywhere)
+		bool YellowLight;
+
+	UPROPERTY(EditAnywhere)
+		bool GreenLight;
+
+	UPROPERTY(EditAnywhere)
+		ALights* CurrentLight;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle FuzeTimerHandle;
+
+
 
 	
 	

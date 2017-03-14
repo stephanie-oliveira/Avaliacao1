@@ -39,3 +39,9 @@ void AGeniusPawn::SetupPlayerInputComponent(class UInputComponent* InputComponen
 
 }
 
+void AGeniusPawn::DropLight(){
+
+	UE_LOG(LogTemp, Warning, TEXT("drop"));
+
+}
+
