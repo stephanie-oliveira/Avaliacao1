@@ -89,6 +89,17 @@ void  ALights::AISequencia() {
 	}
 }
 
+void ALights::OnTouchBegin(ETouchIndex::Type type, UPrimitiveComponent* TouchedComponent) {
+
+	UWorld *World = GetWorld();
+	if (World != nullptr) {
+		AGeniusPawn* Pawn = Cast <AGeniusPawn>(UGameplayStatics::GetPlayerController(World, 0)->GetControlledPawn());
+			UE_LOG(LogTemp, Warning, TEXT("Click"));
+			ShineLight();
+
+		}
+}
+
 
 
 

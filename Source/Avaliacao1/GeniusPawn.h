@@ -76,11 +76,7 @@ private:
 	UPROPERTY(EditAnywhere)
 		bool IsPlayer;
 
-
 	
-
-	UPROPERTY(EditAnywhere)
-		TArray<int32> CurrentArray;
 
 	//variaveis que guardam as sequencias para comparação
 	

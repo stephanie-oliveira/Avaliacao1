@@ -27,6 +27,9 @@ public:
 	UFUNCTION()
 		void AISequencia();
 
+	UFUNCTION()
+		void OnTouchBegin(ETouchIndex::Type type, UPrimitiveComponent* TouchedComponent);
+
 
 
 	FORCEINLINE int GetIndex() const { return Index; }
