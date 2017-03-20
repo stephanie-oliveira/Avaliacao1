@@ -24,46 +24,75 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	UFUNCTION()
-		void DropLight();
+		void GerenciarLuzes();
 
-	FORCEINLINE class ALights* GetCurrentLight() const { return CurrentLight; }
-	FORCEINLINE void SetCurrentLight(class ALights* NewCurrentLight) { CurrentLight = NewCurrentLight; }
+	UFUNCTION()
+		void GerarSequencia();
+
+	UFUNCTION()
+		void Gerenciador();
+
+	UPROPERTY(EditAnywhere)
+		TArray<int32> SequenciaComputador;
+
+	FORCEINLINE class ALights* GetRedLight() const { return RedLight; }
+	FORCEINLINE void SetRedLight(class ALights* NewRedLight) { RedLight = NewRedLight; }
+
+	FORCEINLINE class ALights* GetBlueLight() const { return BlueLight; }
+	FORCEINLINE void SetBlueLight(class ALights* NewBlueLight) { BlueLight = NewBlueLight; }
+
+	FORCEINLINE class ALights* GetYellowLight() const { return YellowLight; }
+	FORCEINLINE void SetYellowLight(class ALights* NewYellowLight) { YellowLight = NewYellowLight; }
+
+	FORCEINLINE class ALights* GetGreenLight() const { return GreenLight; }
+	FORCEINLINE void SetGreenLight(class ALights* NewGreenLight) { GreenLight = NewGreenLight; }
+
+	
 
 
-	FORCEINLINE bool GetRedLight() const { return RedLight; }
-	FORCEINLINE void SetRedLight(bool NewRedLight) { RedLight = NewRedLight; }
 
-	FORCEINLINE bool GetBlueLight() const { return BlueLight; }
-	FORCEINLINE void SetBlueLight(bool NewBlueLight) { BlueLight = NewBlueLight; }
-
-	FORCEINLINE bool GetYellowLight() const { return YellowLight; }
-	FORCEINLINE void SetYellowLight(bool NewYellowLight) { YellowLight = NewYellowLight; }
-
-	FORCEINLINE bool GetGreenLight() const { return GreenLight; }
-	FORCEINLINE void SetGreenLight(bool NewGreenLight) { GreenLight = NewGreenLight; }
 
 private:
+
 
 	UPROPERTY(EditAnywhere)
 		UCameraComponent* Camera;
 
 	UPROPERTY(EditAnywhere)
-		bool RedLight;
+		ALights* RedLight;
 
 	UPROPERTY(EditAnywhere)
-		bool BlueLight;
+		ALights* BlueLight;
 
 	UPROPERTY(EditAnywhere)
-		bool YellowLight;
+		ALights* YellowLight;
 
 	UPROPERTY(EditAnywhere)
-		bool GreenLight;
+		ALights* GreenLight;
 
 	UPROPERTY(EditAnywhere)
-		ALights* CurrentLight;
+		bool IsComp;
+
+	UPROPERTY(EditAnywhere)
+		bool IsPlayer;
+
+
+	
+
+	UPROPERTY(EditAnywhere)
+		TArray<int32> CurrentArray;
+
+	//variaveis que guardam as sequencias para comparação
+	
+
+	UPROPERTY(EditAnywhere)
+		TArray<int32> SequenciaJogador;
 
 	UPROPERTY(EditAnywhere)
 		FTimerHandle FuzeTimerHandle;
+
+	int32 PosicaoAtual;
+	int i;
 
 
 

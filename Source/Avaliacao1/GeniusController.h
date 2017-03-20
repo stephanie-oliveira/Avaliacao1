@@ -12,6 +12,9 @@ UCLASS()
 class AVALIACAO1_API AGeniusController : public APlayerController
 {
 	GENERATED_BODY()
+
+public:
+	AGeniusController();
 	
 	
 	

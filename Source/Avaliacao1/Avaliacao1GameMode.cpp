@@ -2,7 +2,13 @@
 
 #include "Avaliacao1.h"
 #include "Avaliacao1GameMode.h"
+#include "GeniusController.h"
 
 
+AAvaliacao1GameMode::AAvaliacao1GameMode() {
+
+	PlayerControllerClass = AGeniusController::StaticClass();
+
+}
 
 

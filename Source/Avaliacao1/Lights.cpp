@@ -18,7 +18,6 @@ ALights::ALights()
 
 	Sprite->SetSprite(ClosedSprite);
 
-	Sprite->OnInputTouchBegin.AddDynamic(this, &ALights::OnTouchBegin);
 	RootComponent = Sprite;
 	
 }
@@ -27,7 +26,8 @@ ALights::ALights()
 void ALights::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	AISequencia();
 }
 
 // Called every frame
@@ -35,37 +35,60 @@ void ALights::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
+
 }
 
-void ALights::OnTouchBegin(ETouchIndex::Type type, UPrimitiveComponent* TouchedComponent) {
 
+void ALights::DropLight() {
+
+//	SetIsActived(false);
+	Sprite->SetSprite(ClosedSprite);
 	UWorld *World = GetWorld();
+
+	World->GetTimerManager().ClearTimer(FuzeTimerHandle);
+
 	if (World != nullptr) {
 		AGeniusPawn* Pawn = Cast <AGeniusPawn>(UGameplayStatics::GetPlayerController(World, 0)->GetControlledPawn());
+		if (Pawn->SequenciaComputador.Num() < 5) {
+			Pawn->Gerenciador();
+		}
+	}
+
+
+}
+
+void ALights::ShineLight() {
+
+	Sprite->SetSprite(OpenedSprite);
+
+	GetWorld()->GetTimerManager().SetTimer(FuzeTimerHandle, this, &ALights::DropLight, 1.0f, true);
+
+}
+
+void  ALights::AISequencia() {
+		UWorld *World = GetWorld();
+
+		if (World != nullptr) {
+
+			AGeniusPawn* Pawn = Cast <AGeniusPawn>(UGameplayStatics::GetPlayerController(World, 0)->GetControlledPawn());
 		
-		if (Pawn->GetRedLight()) {
-			Sprite->SetSprite(OpenedSprite);
-			UE_LOG(LogTemp, Warning, TEXT("luz vermelha acesa"));
+			if (GetIndex() == 1) {
+				Pawn->SetRedLight(this);
+			}
+			else if (GetIndex() == 2) {
+				Pawn->SetBlueLight(this);
+			}
+			else if (GetIndex() == 3) {
+				Pawn->SetGreenLight(this);
+			}
+			else if (GetIndex() == 4) {
+				Pawn->SetYellowLight(this);
 
-			Pawn->DropLight();
-
-		}
-		else if (Pawn->GetBlueLight()) {
-			Sprite->SetSprite(OpenedSprite);
-			UE_LOG(LogTemp, Warning, TEXT("luz azul acesa"));
-
-		}
-		else if (Pawn->GetYellowLight()) {
-			Sprite->SetSprite(OpenedSprite);
-			UE_LOG(LogTemp, Warning, TEXT("luz amarela acesa"));
-
-		}
-		else if (Pawn->GetGreenLight()) {
-			Sprite->SetSprite(OpenedSprite);
-			UE_LOG(LogTemp, Warning, TEXT("luz verde acesa"));
-
-		}
-		
+			}
+			Pawn->Gerenciador();
 	}
 }
+
+
+
 

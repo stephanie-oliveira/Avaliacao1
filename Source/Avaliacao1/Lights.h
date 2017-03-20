@@ -20,9 +20,25 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	
-private:
+	UFUNCTION()
+		void ShineLight();
+	UFUNCTION()
+		void DropLight();
+	UFUNCTION()
+		void AISequencia();
 
+
+
+	FORCEINLINE int GetIndex() const { return Index; }
+	FORCEINLINE void SetIndex(int NewIndex) { Index = NewIndex; }
+
+	FORCEINLINE bool GetIsActived() const { return IsActived; }
+	FORCEINLINE void SetIsActived(bool NewIsActived) { IsActived = NewIsActived; }
+	
+
+private:
+	
+	
 	UPROPERTY(EditAnywhere)
 		class UPaperSpriteComponent* Sprite;
 
@@ -32,6 +48,19 @@ private:
 	UPROPERTY(EditAnywhere)
 		class UPaperSprite* ClosedSprite;
 
-	UFUNCTION()
-		void OnTouchBegin(ETouchIndex::Type type, UPrimitiveComponent* TouchedComponent);
+	UPROPERTY(EditAnywhere)
+		int Index;
+
+	//booleanas para impedir que as luzes pisquem ao mesmo tempo
+
+	UPROPERTY(EditAnywhere)
+		bool IsActived;
+
+
+	//UFUNCTION()
+		//void OnTouchBegin(ETouchIndex::Type type, UPrimitiveComponent* TouchedComponent);
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle FuzeTimerHandle;
+
 };

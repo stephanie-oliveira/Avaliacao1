@@ -13,7 +13,8 @@ class AVALIACAO1_API AAvaliacao1GameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
-	
+		AAvaliacao1GameMode();
+
 	
 	
 };

@@ -3,6 +3,15 @@
 #include "Avaliacao1.h"
 #include "GeniusController.h"
 
+AGeniusController::AGeniusController() {
+
+	bShowMouseCursor = true;
+	DefaultMouseCursor = EMouseCursor::Crosshairs;
+	bEnableTouchEvents = true;
+
+}
+
+
 
 
 
