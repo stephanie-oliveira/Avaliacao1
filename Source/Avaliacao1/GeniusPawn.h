@@ -70,11 +70,6 @@ private:
 	UPROPERTY(EditAnywhere)
 		ALights* GreenLight;
 
-	UPROPERTY(EditAnywhere)
-		bool IsComp;
-
-	UPROPERTY(EditAnywhere)
-		bool IsPlayer;
 
 	
 

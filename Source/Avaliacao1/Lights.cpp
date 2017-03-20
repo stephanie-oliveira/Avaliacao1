@@ -51,6 +51,10 @@ void ALights::DropLight() {
 		AGeniusPawn* Pawn = Cast <AGeniusPawn>(UGameplayStatics::GetPlayerController(World, 0)->GetControlledPawn());
 		if (Pawn->SequenciaComputador.Num() < 5) {
 			Pawn->Gerenciador();
+			IsPlayer = false;
+		}
+		else {
+			IsPlayer = true;
 		}
 	}
 
@@ -96,8 +100,8 @@ void ALights::OnTouchBegin(ETouchIndex::Type type, UPrimitiveComponent* TouchedC
 		AGeniusPawn* Pawn = Cast <AGeniusPawn>(UGameplayStatics::GetPlayerController(World, 0)->GetControlledPawn());
 			UE_LOG(LogTemp, Warning, TEXT("Click"));
 			ShineLight();
-
-		}
+			
+	}
 }
 
 

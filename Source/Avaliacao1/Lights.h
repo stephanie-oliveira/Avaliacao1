@@ -60,6 +60,14 @@ private:
 		bool IsActived;
 
 
+	UPROPERTY(EditAnywhere)
+		bool IsComp;
+
+	UPROPERTY(EditAnywhere)
+		bool IsPlayer;
+
+
+
 	//UFUNCTION()
 		//void OnTouchBegin(ETouchIndex::Type type, UPrimitiveComponent* TouchedComponent);
 
